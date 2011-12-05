@@ -1,7 +1,7 @@
 {
   "name": "Leap!",
   "version": "1.0",
-  "description": "Website launcher from Omnibox",
+  "description": "Website launcher which uses Omnibox",
   "background_page": "background.html",
   "options_page": "options.html",
   "omnibox": { "keyword": "o" },
