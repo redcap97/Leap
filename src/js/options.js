@@ -178,7 +178,7 @@ var resetCommandList = function(){
 
   $('#command-list').html('');
   for(var command in urlMap){
-    $('#command-list').append(createOption(command, urlMap[command]));
+    $('#command-list').prepend(createOption(command, urlMap[command]));
   }
   $('#command-list > option').dblclick(openDialogToEditCommand);
 }
