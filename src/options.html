@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Options - Leap!</title>
+<link rel="stylesheet" href="css/bootstrap-1.4.0.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap-modal.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+<script type="text/javascript" src="js/options.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Options - Leap!</h1>
+
+  <section>
+    <h2>Commands</h2>
+    <form>
+      <fieldset>
+        <select id="command-list" size="15"></select>
+      </fieldset>
+    </form>
+
+    <button id="add-btn" class="btn primary">Add</button>
+    <button id="remove-btn" class="btn danger">Remove</button>
+    <button id="edit-btn" class="btn">Edit</button>
+  </section>
+
+  <section>
+    <h2>Export/Import</h2>
+
+    <form>
+      <fieldset>
+        <div id="export-import-message" class="alert-message block-message hide"></div>
+        <textarea id="data-area" rows="8"></textarea>
+      </fieldset>
+    </form>
+
+    <button id="export-btn" class="btn primary">Export</button>
+    <button id="import-btn" class="btn danger">Import</button>
+  </section>
+
+
+  <div class="modal hide" id="dialog">
+    <div class="modal-header">
+      <h3 id="dialog-header">Add new command</h3>
+    </div>
+
+    <div class="modal-body">
+      <div id="dialog-alert" class="alert-message block-message error hide"></div>
+      <form>
+      <fieldset>
+        <input id="dialog-old-command" type="hidden" />
+
+        <div class="clearfix">
+          <label for="command">Command</label>
+          <div class="input">
+            <input class="xlarge" name="command" id="dialog-command" size="30" type="text" />
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <label for="url">URLs (Delimited by line break)</label>
+          <div class="input">
+            <textarea class="xlarge" id="dialog-url" name="url" rows="6" wrap="off"></textarea>
+          </div>
+        </div>
+      </fieldset>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button id="dialog-btn-save" class="btn primary">Save changes</button>
+      <button id="dialog-btn-close" class="btn danger">Cancel</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
