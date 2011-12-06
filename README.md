@@ -17,6 +17,12 @@ If you input "o {Space} g {Enter}" in Omnibox, Leap! opens GMail, Google Reader 
 You can add, remove and edit commands in the options page.
 Moreover, If you input "o {Space} leap {Enter}" in Omnibox, you can access to the options page quickly.
 
+## LICENSE
+
+Copyright 2011 Akira Midorikawa
+
+Licensed under the GPLv3: [http://www.gnu.org/licenses/gpl-3.0.txt]()
+
 ## Link
 
 - [Chrome Web Store - Leap!](https://chrome.google.com/webstore/detail/jjafmnhliekbijhadfkabocfdpeicdmj)
