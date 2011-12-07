@@ -19,8 +19,6 @@ Moreover, If you input "o {Space} leap {Enter}" in Omnibox, you can access to th
 
 ## LICENSE
 
-Copyright 2011 Akira Midorikawa
-
 Licensed under the GPLv3: [http://www.gnu.org/licenses/gpl-3.0.txt]()
 
 ## Link
