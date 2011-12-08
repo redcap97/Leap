@@ -71,3 +71,20 @@ var editUrlMap = function(fn){
   fn(urlMap);
   saveUrlMap(urlMap);
 }
+
+var changeFocusOfNewTab = function(selected){
+  if(typeof(selected) === "boolean"){
+    localStorage.canSwitchFocusToNewTab = selected.toString();
+  }
+}
+
+var canSwitchFocusToNewTab = function(){
+  var str = localStorage.canSwitchFocusToNewTab;
+
+  if(str === undefined){
+    changeFocusOfNewTab(true);
+    return true;
+  }else{
+    return str === 'true';
+  }
+}

@@ -222,8 +222,18 @@ var setupImportExportSection = function(){
   $('#import-btn').click(importData);
 }
 
+var setupTabSection = function(){
+  $('#tab-focus').click(function(){
+    var checked = $(this).is(':checked');
+    changeFocusOfNewTab(checked);
+  });
+
+  $('#tab-focus').attr('checked', canSwitchFocusToNewTab());
+}
+
 $(function(){
   setupCommandList();
-  setupDialog();
   setupImportExportSection();
+  setupTabSection();
+  setupDialog();
 });

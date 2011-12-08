@@ -16,9 +16,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 var openNewTab = function(url){
+  var selected = canSwitchFocusToNewTab();
+
   chrome.tabs.create({
     url: url,
-    selected: false
+    selected: selected
   });
 }
 

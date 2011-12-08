@@ -19,8 +19,13 @@ section {
   margin-bottom: 30px;
 }
 
-section > ul{
+section ul{
   margin: 20px 18px;
+  font-size: 14px;
+}
+
+.inputs-list label{
+  font-size: 14px;
 }
 
 #command-list{
