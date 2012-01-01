@@ -32,10 +32,6 @@ var defaultUrlMap = {
   ]
 };
 
-String.prototype.strip = function(){
-  return this.replace(/^\s*|\s*$/g, "");
-}
-
 Array.prototype.addAll = function(array){
   for(var i = 0; i < array.length; ++i){
     this.push(array[i]);

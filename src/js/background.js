@@ -38,7 +38,7 @@ var convertToUrls = function(text){
   var urlMap = loadUrlMap();
 
   var urls = new Array();
-  var commands = text.strip().split(/\s+/);
+  var commands = text.trim().split(/\s+/);
 
   for(var i = 0; i < commands.length; ++i){
     var command = commands[i];

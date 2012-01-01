@@ -67,7 +67,7 @@ var splitUrls = function(urls){
 
   var results = new Array();
   for(var i = 0; i < urls.length; ++i){
-    var url = urls[i].strip();
+    var url = urls[i].trim();
     if(validateUrl(url)){
       results.push(url);
     }
