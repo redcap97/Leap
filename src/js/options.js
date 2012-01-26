@@ -42,20 +42,21 @@ var validateUrlMap = function(urlMap){
   }
 
   for(var command in urlMap){
-    var urls = urlMap[command];
+    if(urlMap.hasOwnProperty(command)){
+      var urls = urlMap[command];
 
-    if(!validateCommand(command)){
-      return false;
-    }
-
-    if(!jQuery.isArray(urls) || urls.length === 0){
-      return false;
-    }
-
-    for(var i = 0; i < urls.length; ++i){
-      var url = urls[i];
-      if(!validateUrl(url)){
+      if(!validateCommand(command)){
         return false;
+      }
+
+      if(!jQuery.isArray(urls) || urls.length === 0){
+        return false;
+      }
+
+      for(var i = 0; i < urls.length; ++i){
+        if(!validateUrl(urls[i])){
+          return false;
+        }
       }
     }
   }
@@ -90,7 +91,7 @@ var saveCommand = function(){
     showMessageOnDialog(messages['invalidCommand']);
   }else if(urls.length === 0){
     showMessageOnDialog(messages['invalidUrl']);
-  }else if((command !== oldCommand) && (command in urlMap)){
+  }else if((command !== oldCommand) && urlMap.hasOwnProperty(command)){
     showMessageOnDialog(messages['duplicateCommand']);
   }else{
     delete urlMap[oldCommand];
@@ -195,7 +196,9 @@ var resetCommandList = function(){
 
   $('#command-list').html('');
   for(var command in urlMap){
-    $('#command-list').prepend(createOption(command, urlMap[command]));
+    if(urlMap.hasOwnProperty(command)){
+      $('#command-list').prepend(createOption(command, urlMap[command]));
+    }
   }
   $('#command-list > option').dblclick(openDialogToEditCommand);
 }

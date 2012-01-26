@@ -42,7 +42,7 @@ var convertToUrls = function(text){
 
   for(var i = 0; i < commands.length; ++i){
     var command = commands[i];
-    if(command in urlMap){
+    if(urlMap.hasOwnProperty(command)){
       urls.addAll(urlMap[command]);
     }
   }
