@@ -186,7 +186,7 @@ var importData = function(){
 
 var createOption = function(command, urls){
   var option = $('<option></option>');
-  var caption = command + " [ " + urls.join(', ') + ' ]';
+  var caption = command + ' ( ' + urls.join(', ') + ' )';
 
   return option.data('command', command).text(caption);
 }
