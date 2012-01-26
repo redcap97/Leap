@@ -37,7 +37,7 @@ var validateUrl = function(str){
 
 var validateUrlMap = function(urlMap){
   if(urlMap === null || !isObject(urlMap) ||
-      jQuery.isArray(urlMap)){
+      Array.isArray(urlMap)){
     return false;
   }
 
@@ -49,7 +49,7 @@ var validateUrlMap = function(urlMap){
         return false;
       }
 
-      if(!jQuery.isArray(urls) || urls.length === 0){
+      if(!Array.isArray(urls) || urls.length === 0){
         return false;
       }
 
