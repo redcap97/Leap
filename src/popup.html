@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Popup - Leap!</title>
+<link rel="stylesheet" href="css/bootstrap-1.4.0.min.css" />
+<link rel="stylesheet" href="css/style.css" />
+<style>
+  html{
+    overflow-y: visible;
+  }
+</style>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="js/lib.js"></script>
+</head>
+<body>
+
+<div style="width: 320px;">
+<form class="form-stacked" style="padding-top: 4px;">
+  <fieldset>
+  <legend>Add new command - Leap!</legend>
+  <div class="clearfix">
+    <label for="command">Command</label>
+    <div class="input">
+      <input class="xlarge" name="command" id="dialog-command" size="30" type="text" />
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <label for="url">URLs (Desimited by line break)</label>
+    <div class="input">
+      <textarea class="xlarge" id="dialog-url" name="url" rows="6" wrap="off"></textarea>
+    </div>
+  </div>
+  <div>
+  </div>
+
+  <div>
+    <button class="btn primary">Add</button>
+    <button class="btn danger">Cancel</button>
+  </div>
+  </fieldset>
+</form>
+</div>
+
+</body>
+</html>
