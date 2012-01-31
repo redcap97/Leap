@@ -15,84 +15,20 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var messages = {
-  'invalidUrl'         : 'Please input the URL.',
-  'invalidCommand'     : 'Please input the command name. (White spaces cannot be used.)',
-  'duplicateCommand'   : 'The command name is already used.',
-  'exportingSucceeded' : 'An exporting data was succeeded.',
-  'importingSucceeded' : 'An importing data was succeeded.',
-  'invalidData'        : 'The data is invalid.',
-  'parsingError'       : 'A parsing error occurred.'
-};
-
-var validateCommand = function(str){
-  return (typeof(str) === "string") &&
-    (str.match(/^\S+$/) !== null);
-}
-
-var validateUrl = function(str){
-  return (typeof(str) === "string") &&
-    (str.match(/^\S+$/) !== null);
-}
-
-var validateUrlMap = function(urlMap){
-  if(urlMap === null || !isObject(urlMap) ||
-      Array.isArray(urlMap)){
-    return false;
-  }
-
-  for(var command in urlMap){
-    if(urlMap.hasOwnProperty(command)){
-      var urls = urlMap[command];
-
-      if(!validateCommand(command)){
-        return false;
-      }
-
-      if(!Array.isArray(urls) || urls.length === 0){
-        return false;
-      }
-
-      for(var i = 0; i < urls.length; ++i){
-        if(!validateUrl(urls[i])){
-          return false;
-        }
-      }
-    }
-  }
-  return true;
-}
-
-var splitUrls = function(urls){
-  var urls = urls.split(/\r?\n/g);
-
-  var results = new Array();
-  for(var i = 0; i < urls.length; ++i){
-    var url = urls[i].trim();
-    if(validateUrl(url)){
-      results.push(url);
-    }
-  }
-  return results;
-}
-
-var showMessageOnDialog = function(message){
-  $('#dialog-alert').text(message).show();
-}
-
 var saveCommand = function(){
   var urlMap = loadUrlMap();
+  var writer = new MessageWriter($('#dialog-alert'));
 
   var command = $('#dialog-command').val();
   var oldCommand = $('#dialog-old-command').val();
   var urls = splitUrls($('#dialog-url').val());
 
   if(!validateCommand(command)){
-    showMessageOnDialog(messages['invalidCommand']);
+    writer.show('invalidCommand', false);
   }else if(urls.length === 0){
-    showMessageOnDialog(messages['invalidUrl']);
+    writer.show('invalidUrl', false);
   }else if((command !== oldCommand) && urlMap.hasOwnProperty(command)){
-    showMessageOnDialog(messages['duplicateCommand']);
+    writer.show('duplicateCommand', false);
   }else{
     delete urlMap[oldCommand];
     urlMap[command] = urls;
@@ -148,39 +84,33 @@ var exitDialog = function(){
   $('#dialog').modal('hide');
 }
 
-var showMessageOnExportImportSection = function(message, succeeded){
-  $('#export-import-message')
-    .text(message)
-    .removeClass(succeeded ? "error" : "success")
-    .addClass(succeeded ? "success" : "error")
-    .show();
-}
-
 var exportData = function(){
   var urlMap = loadUrlMap();
+  var writer = new MessageWriter($('#export-import-message'));
+
   $('#data-area')
     .val(JSON.stringify(urlMap))
     .select();
 
-  var showMessage = showMessageOnExportImportSection;
-  showMessage(messages['exportingSucceeded'], true);
+  writer.show('exportingSucceeded', true);
 }
 
 var importData = function(){
-  var showMessage = showMessageOnExportImportSection;
-
   var urls = $('#data-area').val();
+  var writer = new MessageWriter($('#export-import-message'));
+
   try{
     var object = JSON.parse(urls);
     if(validateUrlMap(object)){
       saveUrlMap(object);
       resetCommandList();
-      showMessage(messages['importingSucceeded'], true);
+
+      writer.show('importingSucceeded', true);
     }else{
-      showMessage(messages['invalidData'], false);
+      writer.show('invalidData', false);
     }
   }catch(e){
-    showMessage(messages['parsingError'], false);
+    writer.show('parsingError', false);
   }
 }
 
