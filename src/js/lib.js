@@ -15,7 +15,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-var defaultUrlMap = {
+const DEFAULT_URL_MAP = {
   'gm': [
     'https://mail.google.com/mail/'
   ],
@@ -53,7 +53,6 @@ MessageWriter.prototype.write = function(key, succeeded){
     .addClass(succeeded ? "success" : "error")
     .show();
 }
-
 
 var validateCommand = function(str){
   return (typeof(str) === "string") &&
@@ -116,21 +115,21 @@ var isObject = function(object){
   return (object instanceof Object);
 }
 
-var saveUrlMap = function(urlMap){
-  localStorage.urlmap = JSON.stringify(urlMap);
-}
-
 var getOptionUrl = function(){
   return chrome.extension.getURL("options.html");
 };
+
+var saveUrlMap = function(urlMap){
+  localStorage.urlmap = JSON.stringify(urlMap);
+}
 
 var loadUrlMap = function(){
   var str = localStorage.urlmap
 
   if(str === undefined){
-    defaultUrlMap['leap'] = [getOptionUrl()];
-    saveUrlMap(defaultUrlMap);
-    return defaultUrlMap;
+    DEFAULT_URL_MAP['leap'] = [getOptionUrl()];
+    saveUrlMap(DEFAULT_URL_MAP);
+    return DEFAULT_URL_MAP;
   }else{
     return JSON.parse(str);
   }
