@@ -15,14 +15,29 @@
 </head>
 <body>
 
-<div style="width: 320px;">
-<form class="form-stacked" style="padding-top: 4px;">
-  <fieldset>
+<div class="popup-container">
+
+<form class="form-stacked">
+<fieldset>
   <legend>Add new command - Leap!</legend>
+
+  <div class="popup-alert-message error hide">
+    Please input the command name (white spaces cannot be used).
+  </div>
+
   <div class="clearfix">
     <label for="command">Command</label>
     <div class="input">
       <input class="xlarge" name="command" id="dialog-command" size="30" type="text" />
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <label for="control">Copy URLs From</label>
+    <div class="input">
+      <a class="btn small success">Current Tab</a>
+      <a class="btn small success">Current Window</a>
+      <a class="btn small success">All Windows</a>
     </div>
   </div>
 
@@ -32,16 +47,18 @@
       <textarea class="xlarge" id="dialog-url" name="url" rows="6" wrap="off"></textarea>
     </div>
   </div>
-  <div>
-  </div>
 
-  <div>
+  <div class="clearfix">
     <button class="btn primary">Add</button>
     <button class="btn danger">Cancel</button>
   </div>
-  </fieldset>
+</fieldset>
 </form>
+
+<div class="popup-links">
+  <a href="" target="_blank">Go to options page</a>
 </div>
 
+</div>
 </body>
 </html>
