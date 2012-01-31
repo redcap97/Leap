@@ -46,13 +46,14 @@ var MessageWriter = function(object){
   this.object = object;
 }
 
-MessageWriter.prototype.show = function(key, succeeded){
+MessageWriter.prototype.write = function(key, succeeded){
   this.object
     .text(MESSAGES[key])
     .removeClass(succeeded ? "error" : "success")
     .addClass(succeeded ? "success" : "error")
     .show();
 }
+
 
 var validateCommand = function(str){
   return (typeof(str) === "string") &&

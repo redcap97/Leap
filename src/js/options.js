@@ -24,11 +24,11 @@ var saveCommand = function(){
   var urls = splitUrls($('#dialog-url').val());
 
   if(!validateCommand(command)){
-    writer.show('invalidCommand', false);
+    writer.write('invalidCommand', false);
   }else if(urls.length === 0){
-    writer.show('invalidUrl', false);
+    writer.write('invalidUrl', false);
   }else if((command !== oldCommand) && urlMap.hasOwnProperty(command)){
-    writer.show('duplicateCommand', false);
+    writer.write('duplicateCommand', false);
   }else{
     delete urlMap[oldCommand];
     urlMap[command] = urls;
@@ -92,7 +92,7 @@ var exportData = function(){
     .val(JSON.stringify(urlMap))
     .select();
 
-  writer.show('exportingSucceeded', true);
+  writer.write('exportingSucceeded', true);
 }
 
 var importData = function(){
@@ -105,12 +105,12 @@ var importData = function(){
       saveUrlMap(object);
       resetCommandList();
 
-      writer.show('importingSucceeded', true);
+      writer.write('importingSucceeded', true);
     }else{
-      writer.show('invalidData', false);
+      writer.write('invalidData', false);
     }
   }catch(e){
-    writer.show('parsingError', false);
+    writer.write('parsingError', false);
   }
 }
 
