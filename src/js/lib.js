@@ -34,7 +34,7 @@ const DEFAULT_URL_MAP = {
 
 const MESSAGES = {
   'invalidUrl'         : 'Please input the URL.',
-  'invalidCommand'     : 'Please input the command name. (White spaces cannot be used.)',
+  'invalidCommand'     : 'Please input the command name (white spaces cannot be used).',
   'duplicateCommand'   : 'The command name is already used.',
   'exportingSucceeded' : 'An exporting data was succeeded.',
   'importingSucceeded' : 'An importing data was succeeded.',

@@ -52,15 +52,20 @@ section ul{
 }
 
 .popup-alert-message {
+  font-size: 15px;
   padding-bottom: 4px;
   font-weight: bold;
 }
 
 .popup-alert-message.error {
-  color: red;
+  color: #d40000;
 }
 
 .popup-links {
   padding-left: 20px;
   margin-top: -6px;
+}
+
+#popup-url{
+  resize: vertical;
 }
